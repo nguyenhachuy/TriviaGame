@@ -1,7 +1,7 @@
 //Startup stuff
-$(document).ready = function() {
-
-}
+$(document).ready(function() {
+	display();
+});
 
 //This is the array of questions and answer expected
 var obj = {
@@ -37,4 +37,12 @@ var obj = {
 		"Hit song Rick improvises to save Earth": ["Get Schwifty", "The Vindicators", "Froppy Land"],
 		"What does Jerry's new job pay him with?": ["Noob Noob", "Pills", "Drugs"]
 	}
+}
+
+//Using arrow function to simplify the this 
+function display() {
+	obj["questions"].forEach((value, index, array) => {
+		var div =$("<div>"); 
+		$(".content").append(div.append(value));
+	})
 }
