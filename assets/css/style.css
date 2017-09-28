@@ -1,4 +1,13 @@
 .start-button {
 	font-size: 5rem;
 	padding: 1rem 2rem;
+	display: block;
+}
+
+.question-div {
+	width: 100%;
+}
+
+.button-wrap {
+	
 }
