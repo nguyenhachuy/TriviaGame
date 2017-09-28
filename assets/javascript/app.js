@@ -5,6 +5,7 @@
 //Startup stuff
 $(document).ready(function() {
 	display();
+	$(".start-button").on("click", grade);
 });
 
 //This is the array of questions and answer expected
@@ -77,7 +78,7 @@ function makeChoiceButtons(choices){
 		var button = $("<label>")
 		//Populate the button with the required fields.
 		.addClass(choiceClass)
-		var input = $("<input>").attr("type", "radio").attr("name", "choices");
+		var input = $("<input>").attr("type", "radio").attr("name", `choice${i}`).attr("value", choices[i]);
 		//Then we add
 		button.append(input);
 		button.append(choices[i]);
@@ -89,6 +90,10 @@ function makeChoiceButtons(choices){
 }
 
 /**
- *	Function that handles the on click functionality of each button
- *	Records the answer
+ *	Function that goes through every single button checked to record the answer
  */
+
+function grade() {
+	var answers = $("input:checked");
+	console.log(answers.data("value"));
+}
