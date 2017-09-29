@@ -7,7 +7,6 @@ $(document).ready(function() {
 	display();
 	$(".start-button").on("click", grade);
 	$(".start-button").on("click", startTimer);
-	$(".timer").removeAttr("hidden");
 	$(".start-button").on("click", function() {$(this).attr("hidden", "")});
 });
 
@@ -116,6 +115,7 @@ function grade() {
 	    console.log(this);
 	    clockRunning = true;
 	  }
+		$(".timer").removeAttr("hidden");
 
  }
 
