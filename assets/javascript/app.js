@@ -5,9 +5,11 @@
 //Startup stuff
 $(document).ready(function() {
 	display();
-	$(".start-button").on("click", grade);
-	$(".start-button").on("click", startTimer);
-	$(".start-button").on("click", function() {$(this).attr("hidden", "")});
+	$(".start-button").on("click", function() {
+		$(this).attr("hidden", "");
+		startTimer();
+		setTimeout(stopTimer, time * 1000);
+	});
 });
 
 //This is the array of questions and answer expected
@@ -51,7 +53,7 @@ const choiceClass = "btn btn-success answer mx-auto";
 const questionClass = "lead";
 const divClass = "question-div mx-auto text-center py-3";
 const buttonWrapClass = "button-wrap btn-group radio";
-var time = 25;
+var time = 0;
 var clockRunning = false;
 var intervalId; 
 //Using arrow function to simplify the this 
@@ -100,7 +102,9 @@ function makeChoiceButtons(choices, index){
 
 function grade() {
 	var answers = $("input:checked");
-	console.log(answers.data("value"));
+	for(var i = 0; i < answers.length - 1; i++) {
+		console.log(answers[i].value);
+	}
 }
 
 /**
@@ -112,7 +116,6 @@ function grade() {
 	      time--;
 	      $(".timer").text(timeConverter(time));
 	    }, 1000);
-	    console.log(this);
 	    clockRunning = true;
 	  }
 		$(".timer").removeAttr("hidden");
@@ -122,6 +125,7 @@ function grade() {
 function stopTimer() {
 	clearInterval(intervalId);
 	clockRunning = false;
+	grade();
 }
 
  //TODO Make time converter
