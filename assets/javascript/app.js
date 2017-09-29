@@ -6,6 +6,9 @@
 $(document).ready(function() {
 	display();
 	$(".start-button").on("click", grade);
+	$(".start-button").on("click", startTimer);
+	$(".timer").removeAttr("hidden");
+	$(".start-button").on("click", function() {$(this).attr("hidden", "")});
 });
 
 //This is the array of questions and answer expected
@@ -49,6 +52,9 @@ const choiceClass = "btn btn-success answer mx-auto";
 const questionClass = "lead";
 const divClass = "question-div mx-auto text-center py-3";
 const buttonWrapClass = "button-wrap btn-group radio";
+var time = 25;
+var clockRunning = false;
+var intervalId; 
 //Using arrow function to simplify the this 
 function display() {
 	obj["questions"].forEach((value, index, array) => {
@@ -97,3 +103,48 @@ function grade() {
 	var answers = $("input:checked");
 	console.log(answers.data("value"));
 }
+
+/**
+ * Timer function 
+ */
+ function startTimer(){
+	  if (!clockRunning) {
+	    intervalId = setInterval(function() {
+	      time--;
+	      $(".timer").text(timeConverter(time));
+	    }, 1000);
+	    console.log(this);
+	    clockRunning = true;
+	  }
+
+ }
+
+function stopTimer() {
+	clearInterval(intervalId);
+	clockRunning = false;
+}
+
+ //TODO Make time converter
+ /** 
+  *	Function copied from previous homework as a utility function
+  * @see stopwatch week 6
+  */
+function timeConverter(t) {
+  var minutes = Math.floor(t / 60);
+  var seconds = t - (minutes * 60);
+
+  if (seconds < 10) {
+    seconds = "0" + seconds;
+  }
+
+  if (minutes === 0) {
+    minutes = "00";
+  }
+
+  else if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+
+  return minutes + ":" + seconds;
+}
+
