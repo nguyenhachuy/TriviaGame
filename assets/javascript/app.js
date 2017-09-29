@@ -102,8 +102,10 @@ function makeChoiceButtons(choices, index){
 
 function grade() {
 	var answers = $("input:checked");
-	for(var i = 0; i < answers.length - 1; i++) {
-		console.log(answers[i].value);
+	var key = obj.answers;
+	for(var i = 0; i < answers.length; i++) {
+		var lul = answers[i].value === key[i];
+		console.log(lul);
 	}
 }
 
