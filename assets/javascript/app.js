@@ -62,7 +62,7 @@ function display() {
 		//Make the question as a header
 		var question = $("<h1>").text(value).addClass(questionClass);
 		div.append(question).addClass(divClass);
-		var choices = makeChoiceButtons(obj["choices"][value]);
+		var choices = makeChoiceButtons(obj["choices"][value], index);
 		//Wrapper for choices
 		var wrapper = $("<div>").addClass(buttonWrapClass)
 			.data("toggle", "buttons");
@@ -76,7 +76,7 @@ function display() {
  *	A function to return an object of premade buttons ready to be added to the DOM
  *	@return {object} object that has field a,b,c for each of the makeChoiceButtons
  */ 
-function makeChoiceButtons(choices){
+function makeChoiceButtons(choices, index){
 	var buttonGroup = [];
 	//First we need to get the strings from each array
 	for(var i = 0; i < choices.length; i++) {
@@ -84,7 +84,7 @@ function makeChoiceButtons(choices){
 		var button = $("<label>")
 		//Populate the button with the required fields.
 		.addClass(choiceClass)
-		var input = $("<input>").attr("type", "radio").attr("name", `choice${i}`).attr("value", choices[i]);
+		var input = $("<input>").attr("type", "radio").attr("name", `choice${index}`).attr("value", choices[i]);
 		//Then we add
 		button.append(input);
 		button.append(choices[i]);
