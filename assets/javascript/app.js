@@ -7,6 +7,7 @@ $(document).ready(function() {
 	display();
 	$(".start-button").on("click", function() {
 		$(this).attr("hidden", "");
+		$(".content").removeAttr("hidden");
 		startTimer();
 		setTimeout(stopTimer, time * 1000);
 	});
