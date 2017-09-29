@@ -54,7 +54,7 @@ const choiceClass = "btn btn-success answer mx-auto";
 const questionClass = "lead";
 const divClass = "question-div mx-auto text-center py-3";
 const buttonWrapClass = "button-wrap btn-group radio";
-var time = 0;
+var time = 1;
 var clockRunning = false;
 var intervalId; 
 //Using arrow function to simplify the this 
@@ -129,6 +129,7 @@ function stopTimer() {
 	clearInterval(intervalId);
 	clockRunning = false;
 	grade();
+	$(".content").attr("hidden", "");
 }
 
  //TODO Make time converter
