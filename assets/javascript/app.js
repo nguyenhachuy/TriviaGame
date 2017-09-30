@@ -52,9 +52,9 @@ var obj = {
 //Global variables
 const choiceClass = "btn btn-success answer mx-auto";
 const questionClass = "lead";
-const divClass = "question-div mx-auto text-center py-3";
-const buttonWrapClass = "button-wrap btn-group radio";
-var time = 1;
+const divClass = "question-div mx-auto text-center py-3 text-warning";
+const buttonWrapClass = "button-wrap btn-group radio text-warning";
+var time = 25;
 var clockRunning = false;
 var intervalId;
 var right = wrong = 0; 
