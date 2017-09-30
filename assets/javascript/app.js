@@ -135,8 +135,8 @@ function stopTimer() {
 	//End game sequence
 	var numOfQuestions = obj.questions.length;
 	var unanswered = numOfQuestions - right - wrong;
-	var lul = right +" " + wrong + " " + unanswered;
-	$(".timer").text(lul);
+	var log = `Right: ${right} \n Wrong: ${wrong} \n Unanswered: ${unanswered}`;
+	$(".timer").html(log);
 }
 
  //TODO Make time converter
