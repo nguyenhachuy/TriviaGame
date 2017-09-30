@@ -56,7 +56,8 @@ const divClass = "question-div mx-auto text-center py-3";
 const buttonWrapClass = "button-wrap btn-group radio";
 var time = 1;
 var clockRunning = false;
-var intervalId; 
+var intervalId;
+var right = wrong = 0; 
 //Using arrow function to simplify the this 
 function display() {
 	obj["questions"].forEach((value, index, array) => {
@@ -106,7 +107,8 @@ function grade() {
 	var key = obj.answers;
 	for(var i = 0; i < answers.length; i++) {
 		var lul = answers[i].value === key[i];
-		console.log(lul);
+		if(lul) right++;
+		else wrong++;
 	}
 }
 
@@ -130,6 +132,11 @@ function stopTimer() {
 	clockRunning = false;
 	grade();
 	$(".content").attr("hidden", "");
+	//End game sequence
+	var numOfQuestions = obj.questions.length;
+	var unanswered = numOfQuestions - right - wrong;
+	var lul = right +" " + wrong + " " + unanswered;
+	$(".timer").text(lul);
 }
 
  //TODO Make time converter
